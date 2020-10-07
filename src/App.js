@@ -8,7 +8,9 @@ import {API_URL} from './config'
 //#region Components
 
 import SignIn from './components/auth/SignIn';
-import Navbar from './components/main/Navbar';
+import LaundryHome from './components/laundry/LaundryHome';
+import HotelHome from './components/hotel/HotelHome';
+import Customers from './components/laundry/CustomersList';
 
 //#endregion Components
 
@@ -41,19 +43,37 @@ class App extends Component {
       .then((res)=>{
         this.setState({
           loggedInUser: res.data
-        }, () => {
-          this.props.history.push('/')
         })
+        window.location.reload(false);
       })
+  }
+
+  handleLogOut = () =>{
+    axios.post(`${API_URL}/logout`, {}, {withCredentials: true})
+    .then(()=>{
+      this.setState({
+        loggedInUser: null
+      }, ()=>{
+        this.props.history.push('/')
+      })
+    })
   }
 
   render() {
     return (
       <>
-      <Navbar loggedInUser = {this.loggedInUser}/>
       <Switch>
-        <Route path="/" render ={()=>{
+        <Route exact path="/" render ={()=>{
           return <SignIn onSignIn = {this.handleSignIn} loggedInUser={this.loggedInUser}/>
+        }}/>
+        <Route path="/laundry/home" render ={()=>{
+          return <LaundryHome loggedInUser={this.loggedInUser} logOut = {this.handleLogOut}/>
+        }}/>
+        <Route path="/hotel/home" render ={()=>{ 
+          return <HotelHome loggedInUser={this.loggedInUser} logOut = {this.handleLogOut}/>
+        }}/>
+        <Route path="/laundry/complexes" render ={()=>{ 
+          return <Customers loggedInUser={this.loggedInUser} logOut = {this.handleLogOut}/>
         }}/>
       </Switch>
       </>

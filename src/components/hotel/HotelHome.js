@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-export default function HotelHome() {
+
+import HotelNavbar from './HotelNavbar';
+
+export default function HotelHome(props) {
     return (
-        <div>
-            
-        </div>
+        <>
+            <HotelNavbar logOut = {props.logOut}/>
+        </>
     )
 }

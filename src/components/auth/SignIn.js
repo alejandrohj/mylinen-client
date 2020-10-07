@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {Form, Button} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 import {PUBLIC_URL, API_URL} from '../../config';
 import axios from 'axios';
+
+import Navbar from '../main/Navbar';
 
 
 export default function SignIn(props) {
@@ -14,10 +16,15 @@ export default function SignIn(props) {
             .then((res)=>{
                 setLoggedInUser(res.data);
             })
-    },[])
+    },[props.loggedInUser])
     console.log(loggedInUser)
+    if(loggedInUser){
+        if(loggedInUser.userType ==='gobernanta') return <Redirect to='/hotel/home'/>
+        if(loggedInUser.userType ==='admin') return <Redirect to='/laundry/home'/>
+    }
     return (
         <>
+        <Navbar/>
         <div className="signin" >
         <p style={{textAlign: 'center', padding: '30px', marginLeft:'5%', marginRight:'5%',color: '#036C9C', fontWeight:'600', fontSize: '25px'}}><em>Ordena y organiza tu lencería con myLinen</em></p>
         <Form noValidate className="admin-signinform" onSubmit={props.onSignIn} style={{display: 'flex',flexDirection: 'column' ,justifyContent: 'center', alignItems: 'center' ,textAlign: 'center'}}>
