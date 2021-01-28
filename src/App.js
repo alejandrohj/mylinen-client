@@ -11,12 +11,12 @@ import SignIn from './components/auth/SignIn';
 import LaundryHome from './components/laundry/LaundryHome';
 import HotelHome from './components/hotel/HotelHome';
 import Customers from './components/laundry/CustomersList';
+import Users from './components/laundry/Users';
 
 //#endregion Components
 
 import 'bootstrap/dist/css/bootstrap.css'
 import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
-
 
 class App extends Component {
 
@@ -38,7 +38,7 @@ class App extends Component {
   handleSignIn = (e) =>{
     e.preventDefault();
     const {email, password} = e.currentTarget;
-
+    console.log()
     axios.post(`${API_URL}/signin`,{email: email.value, password: password.value},  {withCredentials: true})
       .then((res)=>{
         this.setState({
@@ -74,6 +74,9 @@ class App extends Component {
         }}/>
         <Route path="/laundry/complexes" render ={()=>{ 
           return <Customers loggedInUser={this.loggedInUser} logOut = {this.handleLogOut}/>
+        }}/>
+        <Route path="/laundry/users" render ={()=>{ 
+          return <Users loggedInUser={this.loggedInUser} logOut = {this.handleLogOut}/>
         }}/>
       </Switch>
       </>

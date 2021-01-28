@@ -9,21 +9,23 @@ export default function LaundryNavbar(props) {
         backgroundSize: 'cover'
     }
     return (
-      <>
-      <Navbar sticky='top' className="general-nav" expand="lg" style={{backgroundColor: '#0b56bf'}}>
-        <Link to="/"><img src={`${PUBLIC_URL}/white-logo.png`} style={{width: '150px'}} alt="logo"/></Link>
-        <Nav.Item>
-            <Link><Button style={{border: 'none',backgroundColor: 'transparent', color: 'white'}}>Lavados</Button></Link>
-        </Nav.Item>
-        <Nav.Item>
-            <Link to={'/laundry/complexes'}><Button style={{border: 'none',backgroundColor: 'transparent', color: 'white'}}>Complejos</Button></Link>
-        </Nav.Item>
-        <div style={{display: 'flex',justifySelf: 'self-end'}}>
-                    <Nav.Item>
-                        <Button style={{border: 'none',backgroundColor: 'transparent', color: 'white'}} onClick={props.logOut}>Salir</Button>
-                    </Nav.Item>
-        </div>
-      </Navbar>
-      </>     
+        <Navbar style={{backgroundColor:'#04c3fe'}} collapseOnSelect expand="lg" sticky="top">
+        <Navbar.Brand href="/"><img src={`${PUBLIC_URL}/white-logo.png`} alt='logo' height='50'/></Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+            <Nav.Link href="/laundry/complexes">Complejos</Nav.Link>
+            <Nav.Link href="/laundry/users">Usuarios</Nav.Link>
+            </Nav>
+            {
+            props.loggedInUser? (<Nav>
+            <Nav><Button onClick={props.logOut}>LogOut </Button></Nav>
+            </Nav>) : (<Nav>
+            <Nav><Link to={'/signin'}> <Button>Registrarse</Button></Link></Nav>
+            </Nav>)
+            }
+            
+        </Navbar.Collapse>
+    </Navbar>   
     )
 }

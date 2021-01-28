@@ -21,7 +21,7 @@ export default function CreateComplex(props) {
           </Modal.Header>
   
           <Modal.Body>
-            <Form onSubmit={props.onCreate} >
+            <Form onSubmit={props.onCreateComplex} >
             <Row>
                 <Col>
               <Form.Group>
