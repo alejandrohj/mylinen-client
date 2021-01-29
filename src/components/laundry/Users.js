@@ -35,24 +35,28 @@ export default function Users(props) {
         .then((response)=>{
             const UsersClone = JSON.parse(JSON.stringify(users));
             UsersClone.map((elem)=>{
-                if(elem._id==id){
+                if(elem._id===id){
                     return response.data
                 }
                 else{return elem}
             })
             setUsers(UsersClone)
-        })
-        
+        }) 
+    }
+    const handleDisableUser = (id) =>{
+
     }
     console.log(users)
     if(!users || !loggedInUser || !complexes) return <p>Loading...</p>
     return (
-        <div>
+        <>
             <LaundryNavbar logOut = {props.logOut}/>
+            <div className='usersComplexCards'>
             {
                users.map((elem,i)=>{
                     return (
-                        <Card key ={'user' + i} style={{ width: '18rem', margin: '10px' }}>
+                        <div className='userComplexCard'>
+                        <Card  key ={'user' + i} style={{ width: '18rem', margin: '10px' }}>
                             <Card.Body>
                                 <Form onSubmit={(e)=>handleModifyUser(e,elem._id)}>
                                 <Form.Group>
@@ -84,16 +88,21 @@ export default function Users(props) {
                             </Form.Group>
                                 ): ''
                                 }
-
-                            <Button onClick={props.handleError} className="general-btn" variant="primary" type="submit">
-                                Modify
-                            </Button>
+                            <div className= 'buttonCouple'>
+                                <Button onClick={props.handleError} className="general-btn" variant="primary" type="submit">
+                                    Modificar
+                                </Button>
+                                <Button variant="warning" onClick={handleDisableUser(elem._id)}>{elem.disable?'Abilitar':'Desabilitar'}</Button>
+                            </div>
                                     </Form>
+                                   
                             </Card.Body>
                         </Card>
+                        </div>
                     )
                }) 
             }
-        </div>
+            </div>
+        </>
     )
 }

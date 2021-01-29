@@ -10,14 +10,14 @@ export default function CreateComplex(props) {
   
     return (
       <>
-        <p style={{textAlign: 'center', marginTop: '20px', color: '#328CB6', fontWeight: '600', fontSize: '20px'}}>Create a new customer</p>
+        <p style={{textAlign: 'center', marginTop: '20px', color: '#328CB6', fontWeight: '600', fontSize: '20px'}}>Clientes</p>
         <div className="create-laundryitem-btn" style={{textAlign: 'center'}}>
-        <Button onClick={handleOpen} className="general-btn createbtn">Create a new complex</Button>
+        <Button onClick={handleOpen} className="general-btn createbtn">Crear nuevo</Button>
         </div>
         <Modal centered show={showCreate} onHide={handleClose}>
   
           <Modal.Header closeButton>
-            <Modal.Title className="admin-card-title">Create a new item</Modal.Title>
+            <Modal.Title className="admin-card-title">Nuevo cliente</Modal.Title>
           </Modal.Header>
   
           <Modal.Body>

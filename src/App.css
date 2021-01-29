@@ -1,0 +1,15 @@
+.buttonCouple {
+    display: flex;
+    flex-wrap: wrap;
+}
+.buttonCouple button {
+    margin: 10px;
+}
+.usersComplexCards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.userComplexCard{
+    margin: 20px;
+}
