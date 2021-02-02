@@ -7,22 +7,22 @@ import LaundryNavbar from './LaundryNavbar';
 
 export default function LaundryHome(props) {
 
-    const [loggedInUser, setLoggedInUser] = useState (null);
+    const [loggedInUser, setLoggedInUser] = useState (props.loggedInUser);
     const [redirecting,setRedirecting] = useState (false);
 
     useEffect(()=>{
         axios.get(`${API_URL}/user`, {withCredentials: true})
         .then((result) => {
-            console.log(result.data)
           setLoggedInUser(result.data)
         }).catch(() => {
             setRedirecting(true)
         })
     },[])
     if(redirecting) return <Redirect to={'/'}/>
+    if(!loggedInUser) return <p>Loading...</p>
     return (
         <>
-            <LaundryNavbar logOut = {props.logOut}/>
+            <LaundryNavbar logOut = {props.logOut} loggedInUser={loggedInUser}/>
         </>
     )
 }

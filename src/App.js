@@ -12,6 +12,8 @@ import LaundryHome from './components/laundry/LaundryHome';
 import HotelHome from './components/hotel/HotelHome';
 import Customers from './components/laundry/CustomersList';
 import Users from './components/laundry/Users';
+import Laundries from './components/laundry/Laundries';
+import ComplexLaundries from './components/laundry/ComplexLaundries';
 
 //#endregion Components
 
@@ -77,6 +79,15 @@ class App extends Component {
         }}/>
         <Route path="/laundry/users" render ={()=>{ 
           return <Users loggedInUser={this.loggedInUser} logOut = {this.handleLogOut}/>
+        }}/>
+        <Route path="/laundry/laundries" render ={()=>{ 
+          return <Laundries loggedInUser={this.loggedInUser} logOut = {this.handleLogOut}/>
+        }}/>
+        <Route path="/complex/:id/laundries" render={(routeProps) => {
+          return <ComplexLaundries 
+                    {...routeProps} 
+                    loggedInUser={this.loggedInUser}
+                  />
         }}/>
       </Switch>
       </>

@@ -17,7 +17,6 @@ export default function SignIn(props) {
                 setLoggedInUser(res.data);
             })
     },[props.loggedInUser])
-    console.log(loggedInUser)
     if(loggedInUser){
         if(loggedInUser.userType ==='gobernanta') return <Redirect to='/hotel/home'/>
         if(loggedInUser.userType ==='admin') return <Redirect to='/laundry/home'/>

@@ -16,6 +16,7 @@ export default function LaundryNavbar(props) {
             <Nav className="mr-auto">
             <Nav.Link href="/laundry/complexes">Complejos</Nav.Link>
             <Nav.Link href="/laundry/users">Usuarios</Nav.Link>
+            <Nav.Link href="/laundry/laundries">Prendas</Nav.Link>
             </Nav>
             {
             props.loggedInUser? (<Nav>

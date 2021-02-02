@@ -9,7 +9,7 @@ export default function LaundryNavbar(props) {
         backgroundSize: 'cover'
     }
     return (
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
+      <Navbar collapseOnSelect expand="lg" style={{backgroundColor:'#04c3fe'}} sticky="top">
       <Navbar.Brand href="/"><img src={`${PUBLIC_URL}/white-logo.png`} alt='logo' height='50'/></Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
