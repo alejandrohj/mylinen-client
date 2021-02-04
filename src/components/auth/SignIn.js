@@ -29,7 +29,7 @@ export default function SignIn(props) {
         <Form noValidate className="admin-signinform" onSubmit={props.onSignIn} style={{display: 'flex',flexDirection: 'column' ,justifyContent: 'center', alignItems: 'center' ,textAlign: 'center'}}>
             <Form.Group style={{width:'50%'}} controlId="formBasicEmail">
             <Form.Label style={{color: '#036C9C', fontWeight:'600'}}>Dirección de correo</Form.Label>
-            <Form.Control  name="email" type="email" placeholder="Enter email" />
+            <Form.Control  name="email" type="email" placeholder="Enter email"/>
             <Form.Text className="text-muted">
                 Tu email
             </Form.Text>

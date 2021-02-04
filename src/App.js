@@ -14,6 +14,7 @@ import Customers from './components/laundry/CustomersList';
 import Users from './components/laundry/Users';
 import Laundries from './components/laundry/Laundries';
 import ComplexLaundries from './components/laundry/ComplexLaundries';
+import EditService from './components/hotel/EditService';
 
 //#endregion Components
 
@@ -87,7 +88,15 @@ class App extends Component {
           return <ComplexLaundries 
                     {...routeProps} 
                     loggedInUser={this.loggedInUser}
+                    logOut = {this.handleLogOut}
                   />
+        }}/>
+        <Route path="/customer/service/:id/edit" render ={(routeProps)=>{ 
+          return <EditService 
+                {...routeProps} 
+                loggedInUser={this.loggedInUser} 
+                logOut = {this.handleLogOut}
+                />
         }}/>
       </Switch>
       </>
